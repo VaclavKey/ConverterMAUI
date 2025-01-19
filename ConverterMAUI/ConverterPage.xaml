@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ConverterMAUI.ConverterPage"
+             Title="ConverterPage"
+             xmlns:local="clr-namespace:ConverterMAUI"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False">
+
+    <ContentPage.BindingContext>
+        <local:ConverterViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <Style TargetType="Border" x:Key="CalculatorBorderStyle">
+            <Setter Property="HeightRequest" Value="{Binding CalculatorHeight}"/>
+            <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+            <Setter Property="Background" Value="#5B5B5B"/>
+            <Setter Property="Padding" Value="0"/>
+        </Style>
+        <Style TargetType="Button" x:Key="CalculatorButtonStyle">
+            <Setter Property="BackgroundColor" Value="Gray"/>
+            <Setter Property="TextColor" Value="#FFFFFF"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+            <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+            <Setter Property="CornerRadius" Value="0"/>
+            <Setter Property="BorderColor" Value="#4B4B4B"/>
+            <Setter Property="BorderWidth" Value="0.2"/>
+            <Setter Property="Padding" Value="10"/>
+            <!--<Setter Property="HeightRequest" Value="100"/>-->
+        </Style>
+
+
+        <Style TargetType="Border" x:Key="CurrencyField">
+            <Setter Property="HeightRequest" Value="{Binding CurrencyFieldHeight}"/>
+            <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+            <Setter Property="Background" Value="#2B2B2B"/>
+            <Setter Property="Padding" Value="0"/>
+        </Style>
+        <Style TargetType="Image" x:Key="CurrencyImageStyle">
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="VerticalOptions" Value="Start"/>
+            <!--<Setter Property="Margin" Value="10"/>-->
+            <Setter Property="WidthRequest" Value="{Binding CurrencyImgSize}"/>
+            <Setter Property="HeightRequest" Value="{Binding CurrencyImgSize}"/>
+        </Style>
+        <Style TargetType="Label" x:Key="CurrencyAbbrStyle">
+            <Setter Property="TextColor"  Value="#939393"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="VerticalOptions" Value="End"/>
+            <!--<Setter Property="Margin" Value="10"/>-->
+        </Style>
+        <Style TargetType="Button" x:Key="CurrencyButtonStyle">
+            <Setter Property="Grid.Column" Value="0"/>
+            <Setter Property="Grid.ColumnSpan" Value="2"/>
+            <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderWidth" Value="0"/>
+            <Setter Property="HeightRequest" Value="{Binding CurrencyFieldHeight}"/>
+        </Style>
+        <Style TargetType="Border" x:Key="CurrencyBtn">
+            <Setter Property="WidthRequest" Value="{Binding CurrencyBtnWidth}"/>
+            <Setter Property="HeightRequest" Value="{Binding CurrencyFieldHeight}"/>
+            <Setter Property="Padding" Value="10, 20, 10, 10"/>
+        </Style>
+        <Style TargetType="Entry" x:Key="CurrencyAmount">
+            <Setter Property="HorizontalTextAlignment" Value="End"/>
+            <Setter Property="Background" Value="DarkGray"/>
+            <Setter Property="TextColor" Value="#FFFFFF"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+            <Setter Property="WidthRequest" Value="{Binding CurrencyEntryWidth}"/>
+            <Setter Property="HeightRequest" Value="{Binding CurrencyFieldHeight}"/>
+            <Setter Property="Margin" Value="0"/>
+
+        </Style>
+    </ContentPage.Resources>
+
+    <VerticalStackLayout>
+        <Border Style="{StaticResource CurrencyField}">
+            <HorizontalStackLayout>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border Grid.Column="0" Style="{StaticResource CurrencyBtn}">
+                        <VerticalStackLayout>
+                            <Image x:Name="fromCurrencyImg" Style="{StaticResource CurrencyImageStyle}"/>
+                            <Label x:Name="fromCurrencyAbbr" Style="{StaticResource CurrencyAbbrStyle}"/>
+                        </VerticalStackLayout>
+                    </Border>
+                    <Entry Style="{StaticResource CurrencyAmount}" Grid.Column="1" Text="{Binding FromAmount}"/>
+
+                </Grid>
+            </HorizontalStackLayout>
+        </Border>
+
+        <Border Style="{StaticResource CurrencyField}">
+            <HorizontalStackLayout>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--<Button Style="{StaticResource CurrencyButtonStyle}"/>-->
+                    <Border Grid.Column="0" Style="{StaticResource CurrencyBtn}">
+                        <VerticalStackLayout >
+                            <Image x:Name="toCurrencyImg" Style="{StaticResource CurrencyImageStyle}"/>
+                            <Label x:Name="toCurrencyAbbr" Style="{StaticResource CurrencyAbbrStyle}"/>
+                        </VerticalStackLayout>
+                    </Border>
+                    <Entry Style="{StaticResource CurrencyAmount}" Grid.Column="1" Text="{Binding ToAmount}"/>
+
+                </Grid>
+            </HorizontalStackLayout>
+        </Border>
+
+        <Border Style="{StaticResource CalculatorBorderStyle}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#b06c58" Text="C" Grid.Row="0" Grid.Column="0"/>
+                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#b06c58" Text="&lt;" Grid.Row="0" Grid.Column="1"/>
+                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#b06c58" Text="~" Grid.Row="0" Grid.Column="2"/>
+                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#5e2414" Text="/" Grid.Row="0" Grid.Column="3"/>
+                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#5e2414" Text="X" Grid.Row="1" Grid.Column="3"/>
+                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#5e2414" Text="+" Grid.Row="3" Grid.Column="3"/>
+                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#5e2414" Text="-" Grid.Row="2" Grid.Column="3"/>
+                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#5e2414" Text="=" Grid.Row="4" Grid.Column="3"/>
+                <Button Style="{StaticResource CalculatorButtonStyle}" Text="," Grid.Row="4" Grid.Column="1"/>
+                <Button Style="{StaticResource CalculatorButtonStyle}" Text="%" Grid.Row="4" Grid.Column="2"/>
+                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#ac7c4c" Text="9" Grid.Row="1" Grid.Column="2"/>
+                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#ac7c4c" Text="8" Grid.Row="1" Grid.Column="1"/>
+                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#ac7c4c" Text="7" Grid.Row="1" Grid.Column="0"/>
+                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#ac7c4c" Text="6" Grid.Row="2" Grid.Column="2"/>
+                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#ac7c4c" Text="5" Grid.Row="2" Grid.Column="1"/>
+                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#ac7c4c" Text="4" Grid.Row="2" Grid.Column="0"/>
+                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#ac7c4c" Text="3" Grid.Row="3" Grid.Column="2"/>
+                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#ac7c4c" Text="2" Grid.Row="3" Grid.Column="1"/>
+                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#ac7c4c" Text="1" Grid.Row="3" Grid.Column="0"/>
+                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#ac7c4c" Text="0" Grid.Row="4" Grid.Column="0"/>
+
+            </Grid>
+        </Border>
+    </VerticalStackLayout>
+</ContentPage>
