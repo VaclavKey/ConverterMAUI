@@ -98,8 +98,8 @@ namespace ConverterMAUI
         }
         private async Task Convert()
         {
-            decimal? rate = await CurrencyConverter.GetConversionRateAsync(FromCurrencyAbbr, ToCurrencyAbbr);
-            ToAmount = rate * FromAmount;
+            var rate = await CurrencyConverter.GetRate(FromCurrencyAbbr, ToCurrencyAbbr);
+            ToAmount = FromAmount * rate;
         }
 
     }
