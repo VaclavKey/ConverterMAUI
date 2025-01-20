@@ -1,4 +1,5 @@
-﻿namespace ConverterMAUI
+﻿using static ConverterMAUI.ConverterViewModel;
+namespace ConverterMAUI
 {
     public partial class MainPage : ContentPage
     {

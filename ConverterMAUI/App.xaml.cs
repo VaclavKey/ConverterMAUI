@@ -6,7 +6,8 @@
         {
             InitializeComponent();
 
-            MainPage = new AppShell();
+            MainPage = new NavigationPage(new MainPage());
+            NavigationPage.SetHasNavigationBar(MainPage, false);
         }
     }
 }

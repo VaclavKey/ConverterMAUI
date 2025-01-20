@@ -2,7 +2,6 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ConverterMAUI.ConverterPage"
-             Title="ConverterPage"
              xmlns:local="clr-namespace:ConverterMAUI"
              NavigationPage.HasNavigationBar="False"
              NavigationPage.HasBackButton="False">
@@ -67,7 +66,7 @@
         </Style>
         <Style TargetType="Entry" x:Key="CurrencyAmount">
             <Setter Property="HorizontalTextAlignment" Value="End"/>
-            <Setter Property="Background" Value="DarkGray"/>
+            <Setter Property="Background" Value="#2B2B2B"/>
             <Setter Property="TextColor" Value="#FFFFFF"/>
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
@@ -93,7 +92,7 @@
                             <Label x:Name="fromCurrencyAbbr" Style="{StaticResource CurrencyAbbrStyle}"/>
                         </VerticalStackLayout>
                     </Border>
-                    <Entry Style="{StaticResource CurrencyAmount}" Grid.Column="1" Text="{Binding FromAmount}"/>
+                    <Entry Style="{StaticResource CurrencyAmount}" Grid.Column="1" Keyboard="Numeric" Text="{Binding FromAmount, Mode=TwoWay}"/>
 
                 </Grid>
             </HorizontalStackLayout>
@@ -114,7 +113,7 @@
                             <Label x:Name="toCurrencyAbbr" Style="{StaticResource CurrencyAbbrStyle}"/>
                         </VerticalStackLayout>
                     </Border>
-                    <Entry Style="{StaticResource CurrencyAmount}" Grid.Column="1" Text="{Binding ToAmount}"/>
+                    <Entry Style="{StaticResource CurrencyAmount}" Grid.Column="1" Keyboard="Numeric" Text="{Binding ToAmount, Mode=TwoWay}"/>
 
                 </Grid>
             </HorizontalStackLayout>
@@ -136,26 +135,26 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#b06c58" Text="C" Grid.Row="0" Grid.Column="0"/>
-                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#b06c58" Text="&lt;" Grid.Row="0" Grid.Column="1"/>
-                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#b06c58" Text="~" Grid.Row="0" Grid.Column="2"/>
-                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#5e2414" Text="/" Grid.Row="0" Grid.Column="3"/>
-                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#5e2414" Text="X" Grid.Row="1" Grid.Column="3"/>
-                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#5e2414" Text="+" Grid.Row="3" Grid.Column="3"/>
-                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#5e2414" Text="-" Grid.Row="2" Grid.Column="3"/>
-                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#5e2414" Text="=" Grid.Row="4" Grid.Column="3"/>
-                <Button Style="{StaticResource CalculatorButtonStyle}" Text="," Grid.Row="4" Grid.Column="1"/>
-                <Button Style="{StaticResource CalculatorButtonStyle}" Text="%" Grid.Row="4" Grid.Column="2"/>
-                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#ac7c4c" Text="9" Grid.Row="1" Grid.Column="2"/>
-                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#ac7c4c" Text="8" Grid.Row="1" Grid.Column="1"/>
-                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#ac7c4c" Text="7" Grid.Row="1" Grid.Column="0"/>
-                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#ac7c4c" Text="6" Grid.Row="2" Grid.Column="2"/>
-                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#ac7c4c" Text="5" Grid.Row="2" Grid.Column="1"/>
-                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#ac7c4c" Text="4" Grid.Row="2" Grid.Column="0"/>
-                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#ac7c4c" Text="3" Grid.Row="3" Grid.Column="2"/>
-                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#ac7c4c" Text="2" Grid.Row="3" Grid.Column="1"/>
-                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#ac7c4c" Text="1" Grid.Row="3" Grid.Column="0"/>
-                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#ac7c4c" Text="0" Grid.Row="4" Grid.Column="0"/>
+                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#236473" Text="C" Grid.Row="0" Grid.Column="0"/>
+                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#236473" Text="&lt;" Grid.Row="0" Grid.Column="1"/>
+                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#236473" Text="~" Grid.Row="0" Grid.Column="2"/>
+                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#3b92a3" Text="/" Grid.Row="0" Grid.Column="3"/>
+                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#3b92a3" Text="X" Grid.Row="1" Grid.Column="3"/>
+                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#3b92a3" Text="+" Grid.Row="3" Grid.Column="3"/>
+                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#3b92a3" Text="-" Grid.Row="2" Grid.Column="3"/>
+                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#3b92a3" Text="=" Grid.Row="4" Grid.Column="3"/>
+                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#344a4e" Text="," Grid.Row="4" Grid.Column="0"/>
+                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#344a4e" Text="%" Grid.Row="4" Grid.Column="2"/>
+                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#344a4e" Text="9" Grid.Row="1" Grid.Column="2"/>
+                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#344a4e" Text="8" Grid.Row="1" Grid.Column="1"/>
+                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#344a4e" Text="7" Grid.Row="1" Grid.Column="0"/>
+                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#344a4e" Text="6" Grid.Row="2" Grid.Column="2"/>
+                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#344a4e" Text="5" Grid.Row="2" Grid.Column="1"/>
+                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#344a4e" Text="4" Grid.Row="2" Grid.Column="0"/>
+                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#344a4e" Text="3" Grid.Row="3" Grid.Column="2"/>
+                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#344a4e" Text="2" Grid.Row="3" Grid.Column="1"/>
+                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#344a4e" Text="1" Grid.Row="3" Grid.Column="0"/>
+                <Button Style="{StaticResource CalculatorButtonStyle}" Background="#344a4e" Text="0" Grid.Row="4" Grid.Column="1"/>
 
             </Grid>
         </Border>

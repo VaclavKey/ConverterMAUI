@@ -13,7 +13,6 @@ namespace ConverterMAUI
 
         public double SafeAreaTop { get; set; }
         public double SafeAreaBottom { get; set; }
-
         public double CurrencyBtnWidth { get; }
         public double CurrencyEntryWidth { get; }
         public double CurrencyImageSize { get; }
@@ -26,8 +25,8 @@ namespace ConverterMAUI
 
         private string toCurrencyImg;
         private string toCurrencyAbbr;
-        private string fromAmount;
-        private string toAmount;
+        private decimal? fromAmount;
+        private decimal? toAmount;
 
 
         public string ToCurrencyImg
@@ -54,7 +53,7 @@ namespace ConverterMAUI
                 }
             }
         }
-        public string FromAmount
+        public decimal? FromAmount
         {
             get => fromAmount;
             set
@@ -63,10 +62,11 @@ namespace ConverterMAUI
                 {
                     fromAmount = value;
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("FromAmount"));
+                    _ = RunLoadDataAsync();        
                 }
             }
         }
-        public string ToAmount
+        public decimal? ToAmount
         {
             get => toAmount;
             set
@@ -81,15 +81,26 @@ namespace ConverterMAUI
 
         public ConverterViewModel()
         {
+
             double screenWidth = DeviceDisplay.MainDisplayInfo.Width / DeviceDisplay.MainDisplayInfo.Density;
-            double totalScreenHeight = DeviceDisplay.MainDisplayInfo.Height / DeviceDisplay.MainDisplayInfo.Density;
-            double screenHeight = totalScreenHeight - SafeAreaTop - SafeAreaBottom;
+            double screenHeight = DeviceDisplay.MainDisplayInfo.Height / DeviceDisplay.MainDisplayInfo.Density;
 
             CurrencyBtnWidth = screenWidth * 0.2;
             CurrencyEntryWidth = screenWidth * 0.8;
             CurrencyImageSize = screenWidth * 0.1;
             CurrencyFieldHeight = screenHeight * 0.125;
-            CalculatorHeight = screenHeight * 0.75;
+            CalculatorHeight = screenHeight * 0.70;
         }
+
+        private async Task RunLoadDataAsync()
+        {
+            await Convert();
+        }
+        private async Task Convert()
+        {
+            decimal? rate = await CurrencyConverter.GetConversionRateAsync(FromCurrencyAbbr, ToCurrencyAbbr);
+            ToAmount = rate * FromAmount;
+        }
+
     }
 }
