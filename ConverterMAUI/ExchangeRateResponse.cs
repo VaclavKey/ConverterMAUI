@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace ConverterMAUI
 {
-    internal class ApiResponse
+    public class ExchangeRateResponse
     {
-        public bool Success { get; set; }
-        public string BaseCode { get; set; }
-
         [JsonProperty("conversion_rates")]
         public Dictionary<string, decimal> Rates { get; set; }
     }

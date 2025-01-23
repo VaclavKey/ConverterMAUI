@@ -13,7 +13,7 @@ public partial class ConverterPage : ContentPage
 
         fromCurrencyImg.Source = FromCurrencyImg;
         fromCurrencyAbbr.Text = FromCurrencyAbbr;
-        toCurrencyImg.Source = "usd.png";
-        toCurrencyAbbr.Text = "USD";
+        //toCurrencyImg.Source = "usd.png";
+        //toCurrencyAbbr.Text = "USD";
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,8 @@ namespace ConverterMAUI
 {
     internal class ConverterViewModel : INotifyPropertyChanged
     {
+        public ObservableCollection<string> Currencies { get; set; }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public double SafeAreaTop { get; set; }
@@ -38,6 +41,7 @@ namespace ConverterMAUI
                 {
                     toCurrencyImg = value;
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ToCurrencyImg"));
+                    
                 }
             }
         }
@@ -50,9 +54,15 @@ namespace ConverterMAUI
                 {
                     toCurrencyAbbr = value;
                     PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ToCurrencyAbbr"));
+                    FromAmount = 0;
+                    ToAmount = 0;
+                    ToCurrencyImg = ToCurrencyAbbr.ToLower() + ".png";
                 }
             }
         }
+        
+        public string FromCurrencyCheck { get; set; }
+        public string ToCurrencyCheck { get; set; }
         public decimal? FromAmount
         {
             get => fromAmount;
@@ -81,6 +91,24 @@ namespace ConverterMAUI
 
         public ConverterViewModel()
         {
+            Currencies = new ObservableCollection<string>
+            {
+                "RUB",
+                "USD",
+                "EUR",
+                "GBP",
+                "JPY",
+                "BYN",
+                "PLN",
+                "CNY",
+                "TRY",
+                "KZT"
+            };
+
+            ToCurrencyImg = "usd.png";
+            ToCurrencyAbbr = "USD";
+            FromCurrencyCheck = FromCurrencyAbbr;
+            ToCurrencyCheck = ToCurrencyAbbr;
 
             double screenWidth = DeviceDisplay.MainDisplayInfo.Width / DeviceDisplay.MainDisplayInfo.Density;
             double screenHeight = DeviceDisplay.MainDisplayInfo.Height / DeviceDisplay.MainDisplayInfo.Density;
@@ -88,7 +116,7 @@ namespace ConverterMAUI
             CurrencyBtnWidth = screenWidth * 0.2;
             CurrencyEntryWidth = screenWidth * 0.8;
             CurrencyImageSize = screenWidth * 0.1;
-            CurrencyFieldHeight = screenHeight * 0.125;
+            CurrencyFieldHeight = screenHeight * 0.15;
             CalculatorHeight = screenHeight * 0.70;
         }
 

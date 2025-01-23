@@ -45,10 +45,15 @@
             <Setter Property="HeightRequest" Value="{Binding CurrencyImgSize}"/>
         </Style>
         <Style TargetType="Label" x:Key="CurrencyAbbrStyle">
-            <Setter Property="TextColor"  Value="#939393"/>
+            <Setter Property="TextColor" Value="#939393"/>
             <Setter Property="HorizontalOptions" Value="Center"/>
             <Setter Property="VerticalOptions" Value="End"/>
             <!--<Setter Property="Margin" Value="10"/>-->
+        </Style>
+        <Style TargetType="Picker" x:Key="CurrencyPickerStyle">
+            <Setter Property="TextColor" Value="#939393"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="VerticalOptions" Value="End"/>
         </Style>
         <Style TargetType="Button" x:Key="CurrencyButtonStyle">
             <Setter Property="Grid.Column" Value="0"/>
@@ -78,6 +83,10 @@
     </ContentPage.Resources>
 
     <VerticalStackLayout>
+
+        <Label Text="{Binding FromCurrencyCheck}"/>
+        <Label Text="{Binding ToCurrencyCheck}"/>
+        
         <Border Style="{StaticResource CurrencyField}">
             <HorizontalStackLayout>
                 <Grid>
@@ -109,8 +118,8 @@
                     <!--<Button Style="{StaticResource CurrencyButtonStyle}"/>-->
                     <Border Grid.Column="0" Style="{StaticResource CurrencyBtn}">
                         <VerticalStackLayout >
-                            <Image x:Name="toCurrencyImg" Style="{StaticResource CurrencyImageStyle}"/>
-                            <Label x:Name="toCurrencyAbbr" Style="{StaticResource CurrencyAbbrStyle}"/>
+                            <Image Style="{StaticResource CurrencyImageStyle}" Source="{Binding ToCurrencyImg}"/>
+                            <Picker Title="Chose currency" ItemsSource="{Binding Currencies}" SelectedItem="{Binding ToCurrencyAbbr}" Style="{StaticResource CurrencyPickerStyle}"/>
                         </VerticalStackLayout>
                     </Border>
                     <Entry Style="{StaticResource CurrencyAmount}" Grid.Column="1" Keyboard="Numeric" Text="{Binding ToAmount, Mode=TwoWay}"/>

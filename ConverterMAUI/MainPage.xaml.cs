@@ -1,4 +1,4 @@
-﻿using static ConverterMAUI.ConverterViewModel;
+﻿using static ConverterMAUI.ConverterListViewModel;
 namespace ConverterMAUI
 {
     public partial class MainPage : ContentPage
@@ -6,6 +6,7 @@ namespace ConverterMAUI
         public MainPage()
         {
             InitializeComponent();
+
 
         }
         public void RUBClicked(object sender, EventArgs e)
@@ -82,7 +83,7 @@ namespace ConverterMAUI
 
         public async void CurrencyClicked()
         {
-            await Navigation.PushAsync(new ConverterPage());
+            await Navigation.PushAsync(new ConverterListPage());
         }
 
         public void DisplayAlertClick(object sender, EventArgs e)

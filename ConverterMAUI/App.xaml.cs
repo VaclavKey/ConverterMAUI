@@ -12,7 +12,7 @@
 
         protected override async void OnStart()
         {
-            await CurrencyConverter.InitializeDB();
+            await CurrencyConverter.UpdateDBAsync();
         }
     }
 }
