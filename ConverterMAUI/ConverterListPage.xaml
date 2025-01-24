@@ -68,7 +68,7 @@
             <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
             <Setter Property="WidthRequest" Value="{Binding CurrencyEntryWidth}"/>
             <Setter Property="HeightRequest" Value="{Binding CurrencyFieldHeight}"/>
-            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Margin" Value="0, 0, 20, 10"/>
         </Style>
         <Style TargetType="Label" x:Key="AbbrStyle">
             <Setter Property="TextColor" Value="#939393"/>
@@ -108,10 +108,11 @@
 
                     <Border Grid.Column="0" Style="{StaticResource CurrencyBtnStyle}">
                         <VerticalStackLayout>
-                            <Image Style="{StaticResource CurrencyImageStyle}" Source="rub.png" Margin="0"/>
-                            <Picker Title="Chose currency" ItemsSource="{Binding Currencies}" SelectedItem="{Binding FromCurrencyAbbr}" Style="{StaticResource CurrencyPickerStyle}"/>
+                            <Image Style="{StaticResource CurrencyImageStyle}" Source="{Binding MainCurrencyImg}" Margin="0" WidthRequest="{Binding MainCurrencyImgSize}" HeightRequest="{Binding MainCurrencyImgSize}"/>
+                            <Picker Title="." ItemsSource="{Binding Currencies}" SelectedItem="{Binding FromCurrencyAbbr}" Style="{StaticResource CurrencyPickerStyle}"/>
                         </VerticalStackLayout>
                     </Border>
+                    
                     <Entry Style="{StaticResource CurrencyAmount}" Grid.Column="1" Keyboard="Numeric" Text="{Binding FromAmount}"/>
                 </Grid>
             </HorizontalStackLayout>

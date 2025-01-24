@@ -180,9 +180,39 @@ namespace ConverterMAUI
         public double AbbrZoneWidth { get; }
         public double AmountZoneWidth { get; }
         public double CurrencyChoiceFieldHeight { get; }
+        public double MainCurrencyImgSize { get; }
+
+        private string mainCurrencyImg;
+        public string MainCurrencyImg
+        {
+            get => mainCurrencyImg;
+            set
+            {
+                if (mainCurrencyImg != value)
+                {
+                    mainCurrencyImg = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("MainCurrencyImg"));
+
+                }
+            }
+        }
 
         public static string FromCurrencyImg { get; set; }
-        public static string FromCurrencyAbbr { get; set; }
+
+        private string fromCurrencyAbbr;
+        public string FromCurrencyAbbr
+        {
+            get => fromCurrencyAbbr;
+            set
+            {
+                if (fromCurrencyAbbr != value)
+                {
+                    fromCurrencyAbbr = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("FromCurencyAbbr"));
+                    MainCurrencyImg = FromCurrencyAbbr.ToLower() + ".png";
+                }
+            }
+        }
 
         private decimal? fromAmount;
 
@@ -223,10 +253,11 @@ namespace ConverterMAUI
             double screenWidth = DeviceDisplay.MainDisplayInfo.Width / DeviceDisplay.MainDisplayInfo.Density;
             double screenHeight = DeviceDisplay.MainDisplayInfo.Height / DeviceDisplay.MainDisplayInfo.Density;
 
-            CurrencyBtnWidth = screenWidth * 0.2;
+            CurrencyBtnWidth = screenWidth * 0.3;
             CurrencyChoiceFieldHeight = screenWidth * 0.3;
-            CurrencyEntryWidth = screenWidth * 0.8;
+            CurrencyEntryWidth = screenWidth * 0.6;
             CurrencyImgSize = screenWidth * 0.12;
+            MainCurrencyImgSize = screenWidth * 0.15;
             AbbrZoneWidth = screenWidth * 0.3;
             AmountZoneWidth = screenWidth * 0.7;
             CurrencyFieldHeight = screenHeight * 0.08;
